@@ -1,24 +1,30 @@
 {
-  "name": "quant-deck",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
-  "dependencies": {
-    "next": "16.0.3",
-    "react": "19.2.0",
-    "react-dom": "19.2.0"
-  },
-  "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.0.3",
-    "typescript": "^5"
-  }
+    "name": "quant-deck",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "eslint",
+        "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+        "format": "prettier --write \"**/*.{js,jsx,ts,tsx,scss,css,json,md}\""
+    },
+    "dependencies": {
+        "@t3-oss/env-nextjs": "^0.13.8",
+        "next": "16.0.3",
+        "react": "19.2.0",
+        "react-dom": "19.2.0"
+    },
+    "devDependencies": {
+        "@types/node": "^20",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "eslint": "^9",
+        "eslint-config-next": "16.0.3",
+        "eslint-plugin-import": "^2.32.0",
+        "prettier": "3.6.2",
+        "sass": "^1.94.2",
+        "typescript": "^5"
+    }
 }

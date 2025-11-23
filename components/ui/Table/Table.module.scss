@@ -1,0 +1,9 @@
+@use '@/styles/abstracts/mixins' as *;
+
+.emptyRow {
+    @include muted-text;
+}
+
+.errorRow {
+    @include error-text;
+}

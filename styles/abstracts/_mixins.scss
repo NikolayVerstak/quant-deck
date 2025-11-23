@@ -1,0 +1,49 @@
+@use 'sass:map';
+@use '@/styles/abstracts/variables' as *;
+
+@mixin blue-text {
+    font-weight: 500;
+    color: $blue;
+}
+
+@mixin muted-text {
+    font-weight: 500;
+    color: $muted;
+}
+
+@mixin error-text {
+    font-weight: 500;
+    color: $red;
+}
+
+@mixin table {
+    font-size: 14px;
+
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+
+    th {
+        font-size: 12px;
+        font-weight: 500;
+        color: $muted;
+        text-align: center;
+        padding-bottom: 8px;
+    }
+
+    tr:not(:last-child) td {
+        padding-bottom: 8px;
+    }
+
+    td:not(:last-child) {
+        padding-right: 8px;
+    }
+
+    .label {
+        @include blue-text;
+    }
+
+    @media (max-width: map.get($breakpoints, sm)) {
+        font-size: 12px;
+    }
+}

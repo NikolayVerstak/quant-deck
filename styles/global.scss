@@ -1,0 +1,40 @@
+@use 'sass:map';
+@use '@/styles/abstracts/variables' as *;
+@use '@/styles/abstracts/mixins' as *;
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100dvh;
+    width: 100%;
+
+    background-color: $backgroundColor;
+    font-family: var(--font-geist-sans);
+}
+
+h1 {
+    font-size: 32px;
+
+    @media (max-width: map.get($breakpoints, sm)) {
+        font-size: 24px;
+    }
+}
+
+p {
+    font-size: 16px;
+
+    @media (max-width: map.get($breakpoints, sm)) {
+        font-size: 12px;
+    }
+}
+
+.bold {
+    font-weight: 600;
+}

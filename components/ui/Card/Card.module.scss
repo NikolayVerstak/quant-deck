@@ -1,0 +1,22 @@
+@use 'sass:map';
+@use '@/styles/abstracts/variables' as *;
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    padding: 24px;
+
+    background-color: $cardBg;
+    border-radius: 8px;
+
+    @media (max-width: map.get($breakpoints, sm)) {
+        padding: 16px;
+    }
+}
+
+.cardTitle {
+    font-size: 18px;
+    color: $cardTitleColor;
+}

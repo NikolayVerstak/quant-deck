@@ -7,6 +7,6 @@ export const env = createEnv({
         API_BASE_URL: z.string(),
     },
     runtimeEnv: {
-        API_BASE_URL: process.env.API_URL,
+        API_BASE_URL: process.env.API_BASE_URL,
     },
 })

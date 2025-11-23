@@ -1,0 +1,41 @@
+@use 'sass:map';
+@use '@/styles/abstracts/variables' as *;
+
+.page {
+    min-height: 100vh;
+    padding: 24px;
+
+    @media (max-width: map.get($breakpoints, sm)) {
+        padding: 16px;
+    }
+}
+
+.pageContent {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 36px;
+
+    max-width: 1200px;
+    margin: 0 auto;
+
+    @media (max-width: map.get($breakpoints, sm)) {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
+.financialCards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    @media (max-width: map.get($breakpoints, sm)) {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+
+    @media (min-width: map.get($breakpoints, md)) {
+        position: sticky;
+        top: 24px;
+    }
+}

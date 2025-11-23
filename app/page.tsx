@@ -1,23 +1,23 @@
-import styles from './page.module.css'
+import styles from './page.module.scss'
 
-import { JsonView } from '@/components/dev/json-view'
-import { getAllFactorGrades } from '@/server/factor-grades/server-queries'
-import { getQuantRanking } from '@/server/quant-ranking/server-queries'
-import { getRatingsSummary } from '@/server/ratings/server-queries'
-import { getUser } from '@/server/user/server-queries'
+import { Article } from '@/components/ui/Article'
+import { FinancialCards } from '@/components/ui/FinancialCards'
 
 export default async function Home() {
-    const [user, ratings, factorGrades, ranking] = await Promise.all([
-        getUser(),
-        getRatingsSummary(),
-        getAllFactorGrades(),
-        getQuantRanking(),
-    ])
-
     return (
-        <div className={styles.page}>
-            <main className={styles.main}>Test Page</main>
-            <JsonView data={{ user, ratings, factorGrades, ranking }} />
-        </div>
+        <>
+            <div className={styles.page}>
+                <div className={styles.pageContent}>
+                    <main>
+                        <Article />
+                    </main>
+                    <aside>
+                        <div className={styles.financialCards}>
+                            <FinancialCards />
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </>
     )
 }

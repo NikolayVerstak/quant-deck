@@ -1,0 +1,12 @@
+@use 'sass:map';
+@use '@/styles/abstracts/variables' as *;
+
+.article {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @media (max-width: map.get($breakpoints, sm)) {
+        gap: 12px;
+    }
+}

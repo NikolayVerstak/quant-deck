@@ -1,12 +1,14 @@
+'use server'
+
 import { normalizeFactorGrades } from './helpers'
 
 import { API_CONFIG } from '@/lib/api/config'
 import { fetcher } from '@/lib/api/fetcher'
 import type {
+    AllFactorGrades,
     FactorGrades3M,
     FactorGrades6M,
     FactorGradesNow,
-    NormalizedFactorGrade,
 } from '@/types/factor-grades'
 
 export async function getFactorGradesNow(): Promise<FactorGradesNow> {
@@ -21,11 +23,7 @@ export async function getFactorGrades6M(): Promise<FactorGrades6M> {
     return fetcher<FactorGrades6M>(API_CONFIG.ENDPOINTS.FACTOR_GRADES_6M)
 }
 
-export async function getAllFactorGrades(): Promise<{
-    now: NormalizedFactorGrade[]
-    threeMonthsAgo: NormalizedFactorGrade[]
-    sixMonthsAgo: NormalizedFactorGrade[]
-}> {
+export async function getAllFactorGrades(): Promise<AllFactorGrades> {
     const [now, threeMonthsAgo, sixMonthsAgo] = await Promise.all([
         getFactorGradesNow(),
         getFactorGrades3M(),

@@ -20,3 +20,16 @@ export interface NormalizedFactorGrade {
     factor: FactorKey
     grade: string
 }
+
+export interface AllFactorGrades {
+    now: NormalizedFactorGrade[]
+    threeMonthsAgo: NormalizedFactorGrade[]
+    sixMonthsAgo: NormalizedFactorGrade[]
+}
+
+export interface GroupedFactorGrade {
+    factor: FactorKey
+    now: string
+    threeMonthsAgo: string
+    sixMonthsAgo: string
+}

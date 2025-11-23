@@ -1,3 +1,5 @@
+'use server'
+
 import { API_CONFIG } from '@/lib/api/config'
 import { fetcher } from '@/lib/api/fetcher'
 import type { QuantRanking } from '@/types/quant-ranking'

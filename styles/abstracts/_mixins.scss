@@ -29,6 +29,10 @@
         color: $muted;
         text-align: center;
         padding-bottom: 8px;
+
+        @media (max-width: map.get($breakpoints, sm)) {
+            font-size: 10px;
+        }
     }
 
     tr:not(:last-child) td {

@@ -61,7 +61,9 @@ export const QuantRankingCard = () => {
                     <div className={styles.emptyRow}>No quant ranking available</div>
                 )}
 
-                {!(isLoading && isError && isEmpty) &&
+                {!isLoading &&
+                    !isError &&
+                    !isEmpty &&
                     rows.map((row, i) => <Row key={i} {...row} />)}
             </div>
         </Card>

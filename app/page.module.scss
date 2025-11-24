@@ -34,7 +34,7 @@
         grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     }
 
-    @media (min-width: map.get($breakpoints, md)) {
+    @media (min-width: map.get($breakpoints, sm)) {
         position: sticky;
         top: 24px;
     }

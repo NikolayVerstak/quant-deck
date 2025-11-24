@@ -27,7 +27,7 @@ export function FinancialCards() {
             queryClient.removeQueries({ queryKey: queryKeys.ratings })
             queryClient.removeQueries({ queryKey: queryKeys.factorGrades })
         }
-    }, [user?.premium])
+    }, [user?.premium, queryClient])
 
     return (
         <>

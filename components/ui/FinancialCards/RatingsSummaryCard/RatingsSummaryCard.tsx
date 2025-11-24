@@ -14,7 +14,7 @@ export const RatingsSummaryCard = () => {
     const { data, isLoading, isError } = useQuery({
         queryKey: queryKeys.ratings,
         queryFn: getRatingsSummary,
-        retry: 2,
+        retry: false,
     })
 
     const rows = data

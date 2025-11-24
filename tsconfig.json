@@ -13,14 +13,17 @@
         "isolatedModules": true,
         "jsx": "react-jsx",
         "incremental": true,
+        "baseUrl": ".",
         "plugins": [
             {
                 "name": "next"
             }
         ],
         "paths": {
-            "@/*": ["./*"]
-        }
+            "@/*": ["./*"],
+            "@/__tests__/*": ["__tests__/*"]
+        },
+        "types": ["jest", "@testing-library/jest-dom"]
     },
     "include": [
         "next-env.d.ts",

@@ -20,7 +20,7 @@ export const QuantRankingCard = () => {
     const { data, isLoading, isError } = useQuery({
         queryKey: queryKeys.quantRanking,
         queryFn: getQuantRanking,
-        retry: 2,
+        retry: false,
     })
 
     const rows: QuantRankingRow[] = data

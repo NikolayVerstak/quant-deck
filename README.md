@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# QuantDeck - Financial Analytics Dashboard
+
+A performant client-side dashboard that displays quantitative stock insights, rankings, and financial metrics. Built with Next.js, TypeScript, and React Query.  
+**Deployed at:** https://quant-deck.vercel.app/
+
+## Features
+
+- **Financial Cards**: Quant ranking, ratings summary, and factor grades
+- **Premium Tiers**: Dynamic content based on the user's subscription level
+- **Responsive Layout**: Optimized for both desktop and mobile
+- **Type-Safe**: Fully written in TypeScript
+- **Test Coverage**: ~90%+ coverage across 30+ unit tests
+
+## Tech Stack
+
+- **Next.js 15** (App Router) + **TypeScript**
+- **React Query** for client-side data fetching and caching
+- **SCSS Modules** for styling
+- **Jest + React Testing Library** for unit testing
 
 ## Getting Started
 
-First, run the development server:
+### Installation
 
 ```bash
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env.local
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Available Commands
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev           # Start development server
+npm run build         # Build for production
+npm run start         # Start production server
+npm test              # Run all tests
+npm run test:watch    # Run tests in watch mode
+```
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/                    # Next.js App Router pages
+components/ui/          # Reusable UI components
+   ├── FinancialCards/  # Main cards (Quant, Ratings, Factors)
+   ├── Card/            # Base card component
+   ├── Skeleton/        # Loading states
+   └── Table/           # Table utilities
+providers/              # React Query provider utilities
+server/                 # API data fetching (client-queries.ts)
+lib/                    # Utilities and configuration
+types/                  # TypeScript type definitions
+styles/                 # Global styles
+__tests__/              # Unit tests
+__mocks__/              # Jest environment mocks
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## API Integration
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Base URL**: `seekingalpha.free.beeceptor.com`
 
-## Deploy on Vercel
+**Endpoints**:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `/user` - User status (premium/free)
+- `/ratings-summary` - SA Analysts, Wall Street, Quant ratings
+- `/factor-grades/now` - Current grades
+- `/factor-grades/3m` - 3-month historical
+- `/factor-grades/6m` - 6-month historical
+- `/quant-ranking` - Sector/industry rankings

@@ -7,6 +7,7 @@ export const createTestQueryClient = () =>
             queries: {
                 retry: false,
                 gcTime: 0,
+                retryDelay: 0,
             },
         },
     })

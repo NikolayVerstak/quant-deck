@@ -6,7 +6,7 @@ import styles from './FactorGradesCard.module.scss'
 import { groupFactorGrades } from './helpers'
 
 import { Card } from '@/components/ui/Card'
-import { TableStateWrapper } from '@/components/ui/Table/TableStateWrapper'
+import { Table } from '@/components/ui/Table'
 import { FACTOR_ORDER } from '@/lib/constants'
 import { queryKeys } from '@/lib/react-query/keys'
 import { getAllFactorGrades } from '@/server/factor-grades/client-queries'
@@ -26,58 +26,27 @@ export const FactorGradesCard = () => {
 
     return (
         <Card title="Factor Grades">
-            <table className={styles.table}>
-                {!isEmpty && !isError && (
-                    <thead>
-                        <tr>
-                            {HEADERS.map((h, i) => (
-                                <th key={i}>{h}</th>
-                            ))}
-                        </tr>
-                    </thead>
-                )}
-
-                <tbody>
-                    <TableStateWrapper
-                        isLoading={isLoading}
-                        isError={isError}
-                        isEmpty={isEmpty}
-                        skeletonRows={FACTOR_ORDER.length}
-                        columns={4}
-                        errorMessage="Failed to load factor grades"
-                        emptyMessage="No factor grades available"
-                    >
-                        {rows.map(row => (
-                            <Row
-                                key={row.factor}
-                                factor={row.factor}
-                                now={row.now}
-                                threeMonthsAgo={row.threeMonthsAgo}
-                                sixMonthsAgo={row.sixMonthsAgo}
-                            />
-                        ))}
-                    </TableStateWrapper>
-                </tbody>
-            </table>
+            <Table
+                headers={HEADERS}
+                showHeaders={!isEmpty && !isError}
+                classNames={{ table: styles.table }}
+                isLoading={isLoading}
+                isError={isError}
+                isEmpty={isEmpty}
+                skeletonRows={FACTOR_ORDER.length}
+                columns={4}
+                errorMessage="Failed to load factor grades"
+                emptyMessage="No factor grades available"
+            >
+                {rows.map(({ factor, now, threeMonthsAgo, sixMonthsAgo }) => (
+                    <tr key={factor}>
+                        <td className={styles.label}>{factor}</td>
+                        <td>{now}</td>
+                        <td>{threeMonthsAgo}</td>
+                        <td>{sixMonthsAgo}</td>
+                    </tr>
+                ))}
+            </Table>
         </Card>
     )
 }
-
-const Row = ({
-    factor,
-    now,
-    threeMonthsAgo,
-    sixMonthsAgo,
-}: {
-    factor: string
-    now: string
-    threeMonthsAgo: string
-    sixMonthsAgo: string
-}) => (
-    <tr>
-        <td className={styles.label}>{factor}</td>
-        <td>{now}</td>
-        <td>{threeMonthsAgo}</td>
-        <td>{sixMonthsAgo}</td>
-    </tr>
-)

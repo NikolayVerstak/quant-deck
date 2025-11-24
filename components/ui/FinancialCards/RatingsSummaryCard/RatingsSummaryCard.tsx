@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import styles from './RatingsSummaryCard.module.scss'
 
 import { Card } from '@/components/ui/Card'
-import { TableStateWrapper } from '@/components/ui/Table/TableStateWrapper'
+import { Table } from '@/components/ui/Table'
 import { queryKeys } from '@/lib/react-query/keys'
 import { getRatingsSummary } from '@/server/ratings/client-queries'
 import type { Rating } from '@/types/ratings'
@@ -29,44 +29,24 @@ export const RatingsSummaryCard = () => {
 
     return (
         <Card title="Ratings Summary">
-            <table className={styles.table}>
-                <tbody>
-                    <TableStateWrapper
-                        isLoading={isLoading}
-                        isError={isError}
-                        isEmpty={isEmpty}
-                        skeletonRows={3}
-                        columns={3}
-                        errorMessage="Failed to load ratings summary"
-                        emptyMessage="No ratings available"
-                    >
-                        {rows.map(row => (
-                            <Row
-                                key={row.label}
-                                label={row.label}
-                                rating={row.rating}
-                                score={row.score}
-                            />
-                        ))}
-                    </TableStateWrapper>
-                </tbody>
-            </table>
+            <Table
+                isLoading={isLoading}
+                isError={isError}
+                isEmpty={isEmpty}
+                skeletonRows={3}
+                columns={3}
+                errorMessage="Failed to load ratings summary"
+                emptyMessage="No ratings available"
+                classNames={{ table: styles.table }}
+            >
+                {rows.map(({ label, rating, score }) => (
+                    <tr key={label}>
+                        <td className={styles.label}>{label}</td>
+                        <td>{rating}</td>
+                        <td>{score}</td>
+                    </tr>
+                ))}
+            </Table>
         </Card>
     )
 }
-
-const Row = ({
-    label,
-    rating,
-    score,
-}: {
-    label: string
-    rating: string
-    score: string
-}) => (
-    <tr>
-        <td className={styles.label}>{label}</td>
-        <td>{rating}</td>
-        <td>{score}</td>
-    </tr>
-)

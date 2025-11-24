@@ -1,4 +1,4 @@
-import { screen, waitFor } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 
 import { mockFactorGrades, mockPremiumUser } from '@/__tests__/tests-utils/mocks'
 import { renderWithQueryClient } from '@/__tests__/tests-utils/renderWithClient'
@@ -72,14 +72,9 @@ describe('FactorGradesCard', () => {
         it('shows error message', async () => {
             renderWithQueryClient(<FactorGradesCard />)
 
-            await waitFor(
-                () => {
-                    expect(
-                        screen.getByText('Failed to load factor grades')
-                    ).toBeInTheDocument()
-                },
-                { timeout: 4000 }
-            )
+            expect(
+                await screen.findByText('Failed to load factor grades')
+            ).toBeInTheDocument()
         })
     })
 
